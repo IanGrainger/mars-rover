@@ -20,4 +20,5 @@ var rover = new Rover.Rover(commandParser, reporter);
 using var inputStream = commandFileInfo.OpenRead();
 rover.ProcessCommandFile(inputStream);
 
+Console.WriteLine("Press any key to exit");
 Console.ReadLine();
