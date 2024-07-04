@@ -55,37 +55,31 @@ public class RoverShould
         Assert.AreEqual(3, sut.Y);
     }
 
-    [TestMethod]
-    public void Acceptance1()
+    [DataTestMethod]
+    [DataRow("PLACE 0,0,NORTH\nMOVE\nREPORT", "0,1,NORTH")]
+    [DataRow("PLACE 0,0,NORTH\nLEFT\nREPORT", "0,0,WEST")]
+    [DataRow("PLACE 1,2,EAST\nMOVE\nMOVE\nLEFT\nMOVE\nREPORT", "3,3,NORTH")]
+    public void Acceptance(string commands, string expectedOutput)
     {
-        var outputAssertion = (string output) => { Assert.AreEqual("0,1,NORTH", output); };
-        var sut = new Rover.Rover(new CommandParser(), outputAssertion);
-        sut.ProcessCommandFile(StreamFromString("PLACE 0,0,NORTH\nMOVE\nREPORT"));
-    }
-
-    [TestMethod]
-    public void Acceptance2()
-    {
-        var outputAssertion = (string output) => { Assert.AreEqual("0,0,WEST", output); };
-        var sut = new Rover.Rover(new CommandParser(), outputAssertion);
-        sut.ProcessCommandFile(StreamFromString("PLACE 0,0,NORTH\nLEFT\nREPORT"));
-    }
-
-    [TestMethod]
-    public void Acceptance3()
-    {
-        var outputAssertion = (string output) => { Assert.AreEqual("3,3,NORTH", output); };
-        var sut = new Rover.Rover(new CommandParser(), outputAssertion);
-        sut.ProcessCommandFile(StreamFromString("PLACE 1,2,EAST\nMOVE\nMOVE\nLEFT\nMOVE\nREPORT"));
+        ProcessCommandsAndAssertExpectedOutput(commands, expectedOutput);
     }
 
     [DataTestMethod]
-    [DataRow("MOVE\nMOVE\nPLACE 1,2,NORTH\nMOVE", "1,3,NORTH")]
-    [DataRow("RIGHT\nMOVE\nRIGHT\nPLACE 1,2,EAST\nMOVE\nMOVE\nRIGHT\nMOVE", ",3,1,SOUTH")]
+    [DataRow("MOVE\nMOVE\nPLACE 1,2,NORTH\nMOVE\nREPORT", "1,3,NORTH")]
+    [DataRow("RIGHT\nMOVE\nRIGHT\nPLACE 1,2,EAST\nMOVE\nMOVE\nRIGHT\nMOVE\nREPORT", "3,1,SOUTH")]
     public void NotMoveUntilPlaced(string commands, string expectedOutput)
     {
+        ProcessCommandsAndAssertExpectedOutput(commands, expectedOutput);
+    }
+
+    private static void ProcessCommandsAndAssertExpectedOutput(string commands, string expectedOutput)
+    {
+        // otherwise test will pass without checking output
+        Assert.IsTrue(commands.EndsWith("\nREPORT"));
+
         var outputAssertion = (string output) => { Assert.AreEqual(expectedOutput, output); };
         var sut = new Rover.Rover(new CommandParser(), outputAssertion);
+        sut.ProcessCommandFile(StreamFromString(commands));
     }
 
     private static MemoryStream StreamFromString(string commands)
