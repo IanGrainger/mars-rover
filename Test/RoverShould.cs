@@ -72,6 +72,16 @@ public class RoverShould
         ProcessCommandsAndAssertExpectedOutput(commands, expectedOutput);
     }
 
+    [DataTestMethod]
+    [DataRow("PLACE 0,1,WEST\nMOVE\nREPORT", "0,1,WEST")]
+    [DataRow("PLACE 2,0,SOUTH\nMOVE\nREPORT", "2,0,SOUTH")]
+    [DataRow("PLACE 5,0,EAST\nMOVE\nREPORT", "5,0,EAST")]
+    [DataRow("PLACE 3,5,NORTH\nMOVE\nREPORT", "3,5,NORTH")]
+    public void NotFallOffTable(string commands, string expectedOutput)
+    {
+        ProcessCommandsAndAssertExpectedOutput(commands, expectedOutput);
+    }
+
     private static void ProcessCommandsAndAssertExpectedOutput(string commands, string expectedOutput)
     {
         // otherwise test will pass without checking output
