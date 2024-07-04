@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rover", "Rover\Rover.csproj", "{38D753D3-370C-4F99-B0A5-B34FC5C2B716}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Program", "Program\Program.csproj", "{883DA8FB-D26E-42AE-AC29-10FB2F3D5771}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test", "Test\Test.csproj", "{4923F214-A386-44A7-914C-EF4E02F0F983}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{38D753D3-370C-4F99-B0A5-B34FC5C2B716}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{38D753D3-370C-4F99-B0A5-B34FC5C2B716}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{38D753D3-370C-4F99-B0A5-B34FC5C2B716}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{38D753D3-370C-4F99-B0A5-B34FC5C2B716}.Release|Any CPU.Build.0 = Release|Any CPU
+		{883DA8FB-D26E-42AE-AC29-10FB2F3D5771}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{883DA8FB-D26E-42AE-AC29-10FB2F3D5771}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{883DA8FB-D26E-42AE-AC29-10FB2F3D5771}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{883DA8FB-D26E-42AE-AC29-10FB2F3D5771}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4923F214-A386-44A7-914C-EF4E02F0F983}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4923F214-A386-44A7-914C-EF4E02F0F983}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4923F214-A386-44A7-914C-EF4E02F0F983}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4923F214-A386-44A7-914C-EF4E02F0F983}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
