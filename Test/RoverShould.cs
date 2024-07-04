@@ -59,7 +59,7 @@ public class RoverShould
     public void Acceptance1()
     {
         var outputAssertion = (string output) => { Assert.AreEqual("0,1,NORTH", output); };
-        var sut = new Rover.Rover(new CommandParser(), (_) => { });
+        var sut = new Rover.Rover(new CommandParser(), outputAssertion);
         sut.ProcessCommandFile(StreamFromString("PLACE 0,0,NORTH\nMOVE\nREPORT"));
     }
 
@@ -67,7 +67,7 @@ public class RoverShould
     public void Acceptance2()
     {
         var outputAssertion = (string output) => { Assert.AreEqual("0,0,WEST", output); };
-        var sut = new Rover.Rover(new CommandParser(), (_) => { });
+        var sut = new Rover.Rover(new CommandParser(), outputAssertion);
         sut.ProcessCommandFile(StreamFromString("PLACE 0,0,NORTH\nLEFT\nREPORT"));
     }
 
@@ -75,7 +75,7 @@ public class RoverShould
     public void Acceptance3()
     {
         var outputAssertion = (string output) => { Assert.AreEqual("3,3,NORTH", output); };
-        var sut = new Rover.Rover(new CommandParser(), (_) => { });
+        var sut = new Rover.Rover(new CommandParser(), outputAssertion);
         sut.ProcessCommandFile(StreamFromString("PLACE 1,2,EAST\nMOVE\nMOVE\nLEFT\nMOVE\nREPORT"));
     }
 
