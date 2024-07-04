@@ -79,6 +79,15 @@ public class RoverShould
         sut.ProcessCommandFile(StreamFromString("PLACE 1,2,EAST\nMOVE\nMOVE\nLEFT\nMOVE\nREPORT"));
     }
 
+    [DataTestMethod]
+    [DataRow("MOVE\nMOVE\nPLACE 1,2,NORTH\nMOVE", "1,3,NORTH")]
+    [DataRow("RIGHT\nMOVE\nRIGHT\nPLACE 1,2,EAST\nMOVE\nMOVE\nRIGHT\nMOVE", ",3,1,SOUTH")]
+    public void NotMoveUntilPlaced(string commands, string expectedOutput)
+    {
+        var outputAssertion = (string output) => { Assert.AreEqual(expectedOutput, output); };
+        var sut = new Rover.Rover(new CommandParser(), outputAssertion);
+    }
+
     private static MemoryStream StreamFromString(string commands)
     {
         return new MemoryStream(Encoding.UTF8.GetBytes(commands));
