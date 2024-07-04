@@ -3,11 +3,12 @@ namespace Rover;
 
 public class Rover
 {
-    public int X;
-    public int Y;
-    public Facing Facing;
+    public int X = 0;
+    public int Y = 0;
+    public Facing Facing = Facing.NORTH;
     public CommandParser CommandParser;
     public Action<string> Reporter;
+    public bool IsPlaced = false;
 
     public Rover(CommandParser parser, Action<string> reporter)
     {
@@ -15,7 +16,6 @@ public class Rover
         Reporter = reporter;
     }
 
-    // todo: move to a RoverManager class?
     public void ProcessCommandFile(Stream inputStream)
     {
         using var textStream = new StreamReader(inputStream);

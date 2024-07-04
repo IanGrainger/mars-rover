@@ -14,7 +14,18 @@
         }
 
         public void Execute(Rover rover) {
-            rover.X = X; rover.Y = Y; rover.Facing = Facing;
+            if (!(X <= Constants.TABLE_SIZE_X
+                && Y <= Constants.TABLE_SIZE_Y
+                && X >= 0
+                && Y >= 0))
+            {
+                return;
+            }
+
+            rover.X = X; 
+            rover.Y = Y; 
+            rover.Facing = Facing;
+            rover.IsPlaced = true;
         }
     }
 }

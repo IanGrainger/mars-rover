@@ -7,6 +7,11 @@
         }
 
         public void Execute(Rover rover) {
+            if (!rover.IsPlaced)
+            {
+                return;
+            }
+
             switch (rover.Facing)
             {
                 case Facing.EAST:

@@ -67,9 +67,19 @@ public class RoverShould
     [DataTestMethod]
     [DataRow("MOVE\nMOVE\nPLACE 1,2,NORTH\nMOVE\nREPORT", "1,3,NORTH")]
     [DataRow("RIGHT\nMOVE\nRIGHT\nPLACE 1,2,EAST\nMOVE\nMOVE\nRIGHT\nMOVE\nREPORT", "3,1,SOUTH")]
+    [DataRow("RIGHT\nMOVE\nRIGHT\nREPORT", "0,0,NORTH")]
     public void NotMoveUntilPlaced(string commands, string expectedOutput)
     {
         ProcessCommandsAndAssertExpectedOutput(commands, expectedOutput);
+    }
+
+    [DataTestMethod]
+    [DataRow("PLACE 6,8,EAST\nMOVE\nREPORT")]
+    [DataRow("PLACE -1,2,WEST\nMOVE\nREPORT")]
+    [DataRow("PLACE 0,6,SOUTH\nMOVE\nREPORT")]
+    public void IgnorePlacementOutsideOfTable(string commands)
+    {
+        ProcessCommandsAndAssertExpectedOutput(commands, "0,0,NORTH");
     }
 
     [DataTestMethod]
