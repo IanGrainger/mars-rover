@@ -30,8 +30,12 @@
             {
                 throw new ArgumentException($"PLACE command requires 3 arguments <X,Y,F>, provided: {locationAndFacing}");
             }
+            var validFacings = Enum.GetNames(typeof(Facing));
+            if (!validFacings.Contains(args[2]))
+            {
+                throw new ArgumentException($"PLACE command <X,Y,F> argument F should be one of {validFacings}. provided: {args[2]}");
+            }
 
-            // todo: these will throw an exception if not integers
             var x = int.Parse(args[0]);
             var y = int.Parse(args[1]);
             var f = (Facing)Enum.Parse(typeof(Facing), args[2]);
